@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Return Orders | Shopping Store')
+@section('title', 'Return Orders | Fintrick Admin')
 
 <style>
     .dropdown-toggle.badge {

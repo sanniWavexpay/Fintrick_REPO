@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Codescandy" />
 
-    <title>{{ config('app.name', 'Fintrick') }} - Admin Control Panel</title> 
+    <title>@yield('title', config('app.name', 'Fintrick') . ' - Admin Control Panel')</title> 
     <meta name="theme-color" content="#ffffff" />
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/images/logo/favicon.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/images/logo/favicon.svg') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/images/logo/favicon.png') }}">
 
     <!-- Color modes -->

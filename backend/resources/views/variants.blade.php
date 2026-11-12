@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Variants | Shopping Store')
+@section('title', 'Variants | Fintrick Admin')
 
 @section('content')
     <style>

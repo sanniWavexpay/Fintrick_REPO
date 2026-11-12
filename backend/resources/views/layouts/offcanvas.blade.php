@@ -2,10 +2,10 @@
      aria-labelledby="offcanvasExampleLabel">
      <div class="offcanvas-header">
 
-         <a class='d-flex align-items-center gap-2' href='index.html'>
-             <img src="assets/images/brand/logo/logo-icon.svg" alt="" />
-             <span class="fw-bold fs-4  site-logo-text">Dasher</span>
-         </a>
+         <a class='d-flex align-items-center gap-2' href='{{ url('/dashboard') }}'>
+            <img src="{{ asset('assets/images/logo/favicon.svg') }}" onerror="this.onerror=null; this.src='{{ asset('assets/images/logo/favicon.png') }}';" style="height: 32px; width: 32px;" alt="Fintrick Logo" />
+            <span class="fw-bold fs-4 text-dark" style="letter-spacing: 2px;">FINTRICK</span>
+        </a>
 
          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
      </div>

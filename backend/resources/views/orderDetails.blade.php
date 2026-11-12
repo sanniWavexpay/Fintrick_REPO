@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Orders | Shopping Store')
+@section('title', 'Orders | Fintrick Admin')
 <?php
 // dd($items);
 ?>
@@ -48,11 +48,11 @@
         left: 0;
         width: 100%;
         height: 10px;
-        background-color: #ec4899;
+        background-color: #C26D43;
     }
 
-    .brand-pink { color: #ec4899; }
-    .bg-brand-pink { background-color: #ec4899; }
+    .brand-pink { color: #C26D43; }
+    .bg-brand-pink { background-color: #C26D43; }
 
     /* Watermark - THANK YOU */
     .watermark {
@@ -87,7 +87,7 @@
     }
 
     .address-box h6 {
-        color: #ec4899;
+        color: #C26D43;
         font-size: 11px;
         font-weight: 800;
         text-transform: uppercase;
@@ -107,7 +107,7 @@
     }
 
     .invoice-table th {
-        background: #ec4899;
+        background: #C26D43;
         color: white;
         padding: 10px 8px;
         font-size: 12px;
@@ -147,13 +147,13 @@
     }
 
     .final-total-row {
-        border-top: 2px solid #ec4899;
+        border-top: 2px solid #C26D43;
         margin-top: 10px;
         padding-top: 15px;
     }
 
     .digital-sign-box {
-        border: 1px solid #ec4899;
+        border: 1px solid #C26D43;
         padding: 10px;
         width: 180px;
         text-align: center;
@@ -163,7 +163,7 @@
 
     .sign-text {
         font-size: 9px;
-        color: #ec4899;
+        color: #C26D43;
         font-weight: 800;
         display: block;
     }
@@ -789,14 +789,14 @@
                 <div class="modal-body p-0">
                     <div class="invoice-container" id="printableInvoice">
                         <div class="invoice-top-bar"></div>
-                        <div class="watermark">THANK YOU</div>
+                        <div class="watermark">FINTRICK</div>
 
                         <!-- MAIN WRAPPER (Top & Center) -->
                         <div class="invoice-body-wrapper">
                             {{-- Header Section --}}
                         <div class="invoice-header-grid">
                             <div>
-                                <h2 class="fw-black brand-pink mb-1">INVOICE</h2>
+                                <img src="{{ asset('assets/images/logo/fintrick-logo.svg') }}" onerror="this.onerror=null; this.src='{{ asset('assets/images/logo/shopLogo.png') }}';" style="height: 38px; width: auto; margin-bottom: 10px;" alt="Fintrick Logo" /><h2 class="fw-black brand-pink mb-1">INVOICE</h2>
                                 <p class="text-muted small mb-0">Order: #{{ $order->OrderNo }}</p>
                                 <p class="text-muted small">Date: {{ date('d M, Y', strtotime($order->CreatedDtTm)) }}</p>
                             </div>
@@ -806,10 +806,10 @@
                                     $cleanCompanyName = ($appCompanyName && $appCompanyName !== 'Laravel') ? $appCompanyName : 'FINTRICK INNOVATIONS';
 
                                     $appAddress = config('app.address');
-                                    $cleanAddress = ($appAddress && $appAddress !== 'India' && $appAddress !== 'Laravel') ? $appAddress : 'A 43, OFFICE NO 8,SECTOR 2,Noida,Gautambuddha Nagar,Uttar Pradesh,201301';
+                                    $cleanAddress = ($appAddress && $appAddress !== 'India' && $appAddress !== 'Laravel') ? $appAddress : '2nd Floor ShopNo.213 Spectrum Business Centre Mercara Hill Road Kalpane Ground Mangaluru Dakshina Kannada Karnataka, 575005';
 
                                     $appGst = config('app.gst');
-                                    $cleanGst = ($appGst && $appGst !== '') ? $appGst : '08ABCDE1234F1Z5';
+                                    $cleanGst = ($appGst && $appGst !== '') ? $appGst : '';
 
                                     $appName = config('app.name');
                                     $cleanBrandName = ($appName && $appName !== 'Laravel') ? $appName : 'Fintrick';
@@ -818,11 +818,11 @@
                                     $cleanEmail = ($appEmail && $appEmail !== 'Laravel') ? $appEmail : 'tech@fintrickinnovations.com';
 
                                     $appPhone = config('app.phone');
-                                    $cleanPhone = ($appPhone && $appPhone !== 'Laravel') ? $appPhone : '9876543210';
+                                    $cleanPhone = ($appPhone && $appPhone !== 'Laravel') ? $appPhone : '9292024432';
                                 @endphp
                                 <h4 class="fw-bold mb-1">{{ $cleanCompanyName }}</h4>
                                 @if($cleanBrandName)
-                                    <p class="text-muted small mb-1" style="font-size: 11px; font-weight: 600; color: #ec4899;">({{ $cleanBrandName }})</p>
+                                    <p class="text-muted small mb-1" style="font-size: 11px; font-weight: 600; color: #C26D43;">({{ $cleanBrandName }})</p>
                                 @endif
                                 <p class="text-muted small mb-0">{{ $cleanAddress }}</p>
                                 <p class="text-muted small mb-0">GST: {{ $cleanGst }}</p>
@@ -962,7 +962,7 @@
                                 <h6 class="brand-pink fw-bold mb-2">CUSTOMER SUPPORT</h6>
                                 <p class="text-muted small mb-1">Email: <strong>{{ $cleanEmail }}</strong></p>
                                 <p class="text-muted small mb-1">Helpline: <strong>{{ $cleanPhone }}</strong></p>
-                                <p class="text-muted small mb-0">Web: <strong>www.{{ strtolower($cleanBrandName) }}.in</strong></p>
+                                <p class="text-muted small mb-0">Web: <strong>https://fintrick.store</strong></p>
                             </div>
                             <div class="col-6 text-end">
                                 <h6 class="text-dark fw-bold mb-2">For {{ strtoupper($cleanCompanyName) }}</h6>

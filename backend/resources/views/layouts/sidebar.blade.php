@@ -55,11 +55,11 @@
     <div class="brand-logo">
         <a href="{{ url('/dashboard') }}" class="text-nowrap logo-img">
             <!-- Mini Logo (Visible only on Collapsed) -->
-            <img src="{{ asset('assets/images/logo/favicon.png') }}" class="logo-mini" alt="Mini Logo" />
+            <img src="{{ asset('assets/images/logo/favicon.svg') }}" onerror="this.onerror=null; this.src='{{ asset('assets/images/logo/favicon.png') }}';" class="logo-mini" alt="Fintrick Mini" />
 
             <!-- Full Logo (Visible only on Expanded) -->
             <span class="logo-full">
-                <img src="{{ asset('assets/images/logo/shopLogo.png') }}" class="sidebartoggler-name"
+                <img src="{{ asset('assets/images/logo/fintrick-logo.svg') }}" onerror="this.onerror=null; this.src='{{ asset('assets/images/logo/shopLogo.png') }}';" class="sidebartoggler-name"
                     style="width: 140px; height: auto;" alt="Full Logo">
             </span>
         </a>

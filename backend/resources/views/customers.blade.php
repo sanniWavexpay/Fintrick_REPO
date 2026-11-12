@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Customer | Shopping Store')
+@section('title', 'Customer | Fintrick Admin')
 
 @section('content')
     <div class="custom-container">

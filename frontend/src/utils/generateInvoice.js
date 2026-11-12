@@ -77,7 +77,7 @@ export const generateInvoice = async (order) => {
 
     doc.setFont("helvetica", "normal");
     doc.setTextColor(80);
-    doc.text([siteConfig.name, siteConfig.address, `GST: ${siteConfig.gst}`], 15, 60);
+    doc.text([siteConfig.legalName || siteConfig.name, siteConfig.address, `Email: ${siteConfig.email}`, `Helpline: +91 ${siteConfig.phone}`], 15, 60);
 
     const customerAddressRaw = `${order.flat_address}`;
     const addressLines = doc.splitTextToSize(customerAddressRaw, 80);
@@ -185,11 +185,11 @@ export const generateInvoice = async (order) => {
 
     doc.setFont("helvetica", "normal");
     doc.setTextColor(100);
-    doc.text([`Email: ${siteConfig.email}`, `Web: www.${siteConfig.name.toLowerCase()}.in`, `Helpline: ${siteConfig.phone}`], 15, footerTopY + 5);
+    doc.text([`Email: ${siteConfig.email}`, `Web: https://${siteConfig.domain}`, `Helpline: +91 ${siteConfig.phone}`], 15, footerTopY + 5);
 
     doc.setFont("helvetica", "bold");
     doc.setTextColor(50);
-    doc.text(`For ${siteConfig.name.toUpperCase()} PVT LTD`, pageWidth - 15, footerTopY, { align: "right" });
+    doc.text(`For ${siteConfig.legalName || 'FINTRICK INNOVATIONS'}`, pageWidth - 15, footerTopY, { align: "right" });
 
     doc.setDrawColor(...brandPink);
     doc.rect(pageWidth - 55, footerTopY + 2, 40, 12);
