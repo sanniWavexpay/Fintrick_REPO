@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="favTile" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D2824" />
+      <stop offset="100%" stop-color="#1A1715" />
+    </linearGradient>
+    <linearGradient id="favAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E07A5F" />
+      <stop offset="100%" stop-color="#C26D43" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded Tile -->
+  <rect width="64" height="64" rx="16" fill="url(#favTile)" />
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="#C26D43" stroke-width="2" stroke-opacity="0.4" />
+
+  <!-- Monogram F -->
+  <path d="M20 18 H42 C44.2091 18 46 19.7909 46 22 C46 24.2091 44.2091 26 42 26 H28 V31 H39 C41.2091 31 43 32.7909 43 35 C43 37.2091 41.2091 39 39 39 H28 V44 C28 45.6569 26.6569 47 25 47 C23.3431 47 22 45.6569 22 44 V20 C22 18.8954 22.8954 18 24 18 Z" fill="#FAF7EE" />
+  
+  <!-- Terracotta Fold & Accent Dot -->
+  <circle cx="43" cy="22" r="4" fill="url(#favAccent)" />
+  <path d="M28 31 H39 C41.2091 31 43 32.7909 43 35 C43 37.2091 41.2091 39 39 39 H28 Z" fill="url(#favAccent)" />
+</svg>
+

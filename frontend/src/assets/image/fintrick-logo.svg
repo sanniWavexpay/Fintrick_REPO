@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 52" fill="none">
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="warmTerracotta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4A373" />
+      <stop offset="100%" stop-color="#C26D43" />
+    </linearGradient>
+    <linearGradient id="espressoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#292524" />
+      <stop offset="100%" stop-color="#1C1917" />
+    </linearGradient>
+  </defs>
+
+  <!-- Luxury Monogram Icon (Geometric "F" Fabric Ribbon) -->
+  <g transform="translate(4, 4)">
+    <!-- Base Rounded Tile -->
+    <rect width="44" height="44" rx="12" fill="url(#espressoGrad)" />
+    <!-- Monogram F paths -->
+    <path d="M14 13 H30 C31.6569 13 33 14.3431 33 16 C33 17.6569 31.6569 19 30 19 H20 V23 H28 C29.6569 23 31 24.3431 31 26 C31 27.6569 29.6569 29 28 29 H20 V33 C20 34.1046 19.1046 35 18 35 C16.8954 35 16 34.1046 16 33 V15 C16 13.8954 16.8954 13 18 13 Z" fill="#FAF7EE" />
+    <!-- Terracotta Accent Fold -->
+    <circle cx="31" cy="16" r="3" fill="url(#warmTerracotta)" />
+    <path d="M20 23 H28 C29.6569 23 31 24.3431 31 26 C31 27.6569 29.6569 29 28 29 H20 Z" fill="url(#warmTerracotta)" opacity="0.9" />
+  </g>
+
+  <!-- Typography: FINTRICK -->
+  <text x="60" y="31" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" letter-spacing="3" fill="#1C1917">
+    FINTRICK
+  </text>
+
+  <!-- Subtitle Pill: .STORE -->
+  <g transform="translate(202, 17)">
+    <rect width="52" height="17" rx="8.5" fill="#C26D43" fill-opacity="0.12" stroke="#C26D43" stroke-width="1" />
+    <text x="26" y="12" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="800" letter-spacing="1.5" fill="#C26D43" text-anchor="middle">
+      STORE
+    </text>
+  </g>
+
+  <!-- Subtle Micro Tagline -->
+  <text x="61" y="42" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="600" letter-spacing="2.8" fill="#78716C">
+    CONTEMPORARY APPAREL
+  </text>
+</svg>
+

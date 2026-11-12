@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: nord --default, winter, night, emerald, cupcake;
+}
+
+/* Custom Theme Overrides & Presets (Fintrick Warm Luxury Contemporary Theme) */
+[data-theme="fintrick"],
+:root {
+  --color-primary: #1c1917;
+  --color-primary-content: #faf7ee;
+  --color-secondary: #c26d43;
+  --color-accent: #d4a373;
+  --color-neutral: #292524;
+  --color-base-100: #faf7ee;
+  --color-base-200: #f3efe6;
+  --color-base-300: #e8dfd0;
+  --color-base-content: #1c1917;
+  --primary-rgb: 28, 25, 23;
+  --terracotta-rgb: 194, 109, 67;
+  --sand-rgb: 232, 223, 208;
+}
+
+[data-theme="rose"] {
+  --color-primary: #1c1917;
+  --color-primary-content: #faf7ee;
+  --color-secondary: #c26d43;
+  --color-accent: #d4a373;
+  --color-neutral: #292524;
+  --color-base-100: #faf7ee;
+}
+
+[data-theme="midnight"] {
+  --color-primary: #1c1917;
+  --color-primary-content: #faf7ee;
+  --color-secondary: #c26d43;
+  --color-accent: #d4a373;
+  --color-neutral: #292524;
+  --color-base-100: #14110f;
+  --color-base-content: #faf7ee;
+}
+
+[data-theme="emerald"] {
+  --color-primary: #047857;
+  --color-primary-content: #ffffff;
+  --color-secondary: #8b5cf6;
+  --color-accent: #fbbf24;
+  --color-neutral: #1f2937;
+  --color-base-100: #f0fdf4;
+}
+
+[data-theme="nordic"] {
+  --color-primary: #27272a;
+  --color-primary-content: #ffffff;
+  --color-secondary: #71717a;
+  --color-accent: #0ea5e9;
+  --color-neutral: #09090b;
+  --color-base-100: #ffffff;
+}
+
+html {
+  overscroll-behavior-y: none;
+  background-color: #faf7ee;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background-color: #faf7ee;
+  color: #1c1917;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  /* ✅ iOS: Prevent font size auto-adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* ✅ Smooth scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ✅ Remove tap highlight on mobile (Android blue flash) */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom Scrollbar for Subcategories */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e8dfd0;
+  border-radius: 10px;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: #d4a373;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e8dfd0 transparent;
+}
+
+/* Mobile Touch Feedback (Premium Snappy Feel) */
+button:active, 
+.btn:active, 
+a:active, 
+[role="button"]:active,
+.checkbox:active,
+.radio:active {
+  transform: scale(0.96) !important;
+  opacity: 0.8;
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Default transition */
+button, .btn, a, [role="button"] {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ✅ iPhone safe area padding utilities */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-left {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+.safe-right {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* ✅ Bottom Nav height variable — consistent spacing */
+:root {
+  --bottom-nav-height: 68px;
+}
+
+/* ✅ Quill & HTML Rich-Text List Styles Fix (Short & Long Descriptions) */
+div[dangerouslySetInnerHTML] ol,
+div[dangerouslySetInnerHTML] ul,
+.prose ol,
+.prose ul {
+  padding-left: 0 !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  counter-reset: ql-counter;
+}
+
+div[dangerouslySetInnerHTML] li[data-list],
+.prose li[data-list] {
+  list-style-type: none !important;
+  position: relative;
+  padding-left: 1.25rem !important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+div[dangerouslySetInnerHTML] li[data-list="bullet"]::before,
+.prose li[data-list="bullet"]::before {
+  content: "\2022" !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+div[dangerouslySetInnerHTML] li[data-list="ordered"],
+.prose li[data-list="ordered"] {
+  counter-increment: ql-counter;
+}
+
+div[dangerouslySetInnerHTML] li[data-list="ordered"]::before,
+.prose li[data-list="ordered"]::before {
+  content: counter(ql-counter, decimal) "." !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Standard HTML lists without Quill data-list */
+div[dangerouslySetInnerHTML] ul:not(:has(li[data-list])),
+.prose ul:not(:has(li[data-list])) {
+  list-style-type: disc !important;
+  padding-left: 1.25rem !important;
+}
+
+div[dangerouslySetInnerHTML] ol:not(:has(li[data-list])),
+.prose ol:not(:has(li[data-list])) {
+  list-style-type: decimal !important;
+  padding-left: 1.25rem !important;
+}
