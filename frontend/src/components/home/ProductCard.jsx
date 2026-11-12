@@ -50,7 +50,13 @@ export function ProductCard({ item }) {
       return;
     }
 
-    const firstVariantId = item?.variants?.[0]?.ID || null;
+    const targetVariantId =
+      item?.VariantID ||
+      item?.variant_id ||
+      item?.variantId ||
+      item?.variants?.[0]?.ID ||
+      item?.ID;
+
     if (cardRef.current) {
       const cardRect = cardRef.current.getBoundingClientRect();
       const cartIcon = document.getElementById("cart-icon-main");
@@ -74,11 +80,11 @@ export function ProductCard({ item }) {
     const mrpVal = Number(item.MRP || priceVal);
 
     addToCart({
-      productId: item.ID,
-      product_id: item.ID,
-      variantId: firstVariantId || item.VariantID || item.ID,
-      variant_id: firstVariantId || item.VariantID || item.ID,
-      cart_id: firstVariantId || item.VariantID || item.ID,
+      productId: Number(item.ID),
+      product_id: Number(item.ID),
+      variantId: Number(targetVariantId),
+      variant_id: Number(targetVariantId),
+      cart_id: Number(targetVariantId),
       Title: item.Title,
       title: item.Title,
       Price: priceVal,

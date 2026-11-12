@@ -132,7 +132,15 @@ export const useCart = () => {
   });
 
   // Helper functions (Aapke purane wale hi chalenge)
-  const addToCart = (item) => (user ? addMutation.mutate(item) : dispatch(cartActions.addToGuestCart(item)));
+  const addToCart = (item) => {
+    if (user) {
+      addMutation.mutate(item);
+    } else {
+      dispatch(cartActions.addToGuestCart(item));
+      toast.success("Added to cart!");
+      dispatch(cartActions.setCartOpen(true));
+    }
+  };
   const updateQty = (data) => (user ? updateMutation.mutate(data) : dispatch(cartActions.updateQuantity(data)));
   const removeItem = (id) => (user ? removeMutation.mutate(id) : dispatch(cartActions.removeItem(id)));
 

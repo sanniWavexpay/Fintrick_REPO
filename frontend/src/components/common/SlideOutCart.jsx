@@ -119,7 +119,7 @@ export const SlideOutCart = ({ isOpen, toggleCart }) => {
                     return (
                       <motion.div
                         layout
-                        key={itemId}
+                        key={item.cart_id ? `cart-${item.cart_id}` : `item-${item.product_id || "p"}-${item.variant_id || idx}`}
                         className="flex gap-4 p-3 rounded-2xl bg-white border border-[#E8DFD0] hover:border-[#C26D43]/50 transition-all group relative overflow-hidden shadow-sm"
                       >
                         <div

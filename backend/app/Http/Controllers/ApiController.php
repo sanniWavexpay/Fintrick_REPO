@@ -505,9 +505,16 @@ class ApiController extends Controller
             $cartItems = DB::table('cart as c')
                 ->join('product as p', 'c.PID', '=', 'p.ID')
                 ->join('product_variants as pv', 'c.VPID', '=', 'pv.ID')
-                ->leftJoin('product_thumbnail as pt', 'p.ID', '=', 'pt.PID')
-                ->leftJoin('inventory as i', 'p.ID', '=', 'i.PID')
+                ->leftJoin('product_thumbnail as pt', function ($join) {
+                    $join->on('p.ID', '=', 'pt.PID')
+                         ->whereRaw('pt.ID = (SELECT MIN(ID) FROM product_thumbnail WHERE PID = p.ID)');
+                })
+                ->leftJoin('inventory as i', function ($join) {
+                    $join->on('c.VPID', '=', 'i.PVID')
+                         ->on('c.PID', '=', 'i.PID');
+                })
                 ->where('c.UID', Auth::id())
+                ->groupBy('c.ID', 'p.Title', 'p.Slug', 'p.GST', 'pt.Url', 'pv.SellPrice', 'pv.Price', 'pv.Discount', 'pv.Attribute', 'c.Quantity', 'c.PID', 'c.VPID')
                 ->select(
                     'c.ID as cart_id',
                     'p.Title',
@@ -518,7 +525,7 @@ class ApiController extends Controller
                     DB::raw('pv.Price as MRP'),
                     'pv.Discount',
                     'pv.Attribute',
-                    'i.AvailableQty',
+                    DB::raw('COALESCE(MAX(i.AvailableQty), 10) as AvailableQty'),
                     'c.Quantity',
                     'c.PID as product_id',
                     'c.VPID as variant_id'
@@ -608,8 +615,20 @@ class ApiController extends Controller
                 ->join('product as p', 'i.PID', '=', 'p.ID')
                 ->where('i.PVID', $vid) // Check variant ID
                 ->where('i.PID', $pid)  // Check product ID
-                ->select('i.AvailableQty', 'i.IsActive as InventoryActive', 'p.IsActive as ProductActive')
+                ->select('i.AvailableQty', 'i.IsActive as InventoryActive', 'p.IsActive as ProductActive', 'i.PVID')
                 ->first();
+
+            // Defensive Fallback: If not found by variant ID, check product-level inventory mapping
+            if (!$stockDetail) {
+                $stockDetail = DB::table('inventory as i')
+                    ->join('product as p', 'i.PID', '=', 'p.ID')
+                    ->where('i.PID', $pid)
+                    ->select('i.AvailableQty', 'i.IsActive as InventoryActive', 'p.IsActive as ProductActive', 'i.PVID')
+                    ->first();
+                if ($stockDetail && $stockDetail->PVID) {
+                    $vid = $stockDetail->PVID;
+                }
+            }
 
             // 1. Existence Check
             if (!$stockDetail) {
